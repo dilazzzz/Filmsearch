@@ -1,0 +1,17 @@
+.wrapper {
+    display: flex;
+    justify-content:space-around;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.link {
+    font-size: 25px;
+    font-family: "Ink Free";
+    font-weight: 600;
+    font-style: italic;
+    letter-spacing: 2px;
+    text-decoration: none;
+    color: #646ECB;
+}

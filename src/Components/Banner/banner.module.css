@@ -1,0 +1,16 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.banner {
+    background-position: center;
+    background-size: cover;
+    height: 190px;
+    width: 100%;
+}
+
+img {
+    width: 100%;
+    height: 100px;
+}

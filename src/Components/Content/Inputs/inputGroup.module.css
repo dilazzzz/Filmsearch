@@ -1,0 +1,21 @@
+
+.input {
+    color: white !important;
+    border-bottom: 2px solid white;
+    width: 600px;
+}
+
+.input::before {
+    display: none !important;
+}
+
+.input::after {
+    border-bottom: 2px solid white !important;
+}
+
+.button {
+    border: 1px solid white !important;
+    color: white !important;
+}
+
+
