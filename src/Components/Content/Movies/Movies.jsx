@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, Fragment} from 'react';
 import moviesStyle from './movies.module.css'
 import poster from '../../../img/pinterest_profile_image.png'
 import InputGroup from "../Inputs/InputGroup";
@@ -30,25 +30,24 @@ const Movies = () => {
         localStorage.setItem('movieList', JSON.stringify(movieList))
     }, [movieList])
 
+
     return (
         <div className={moviesStyle.componentWrapper}>
-            <InputGroup placeholder='Поиск фильма...' movieList={movieList} searchMovie={searchMovie}/>
+            <InputGroup placeholder='Поиск фильма...' movieList={movieList} onSearch={searchMovie}/>
             <div className={moviesStyle.movieListWrapper}>
                 {movieList.map(movie => {
                     return  (
-                        <>
+                        <Fragment key={movie.id}>
                             <Link
                                 to={`/currentMovie/${movie.id}`}
-                                key={movie.id}
-                                className={moviesStyle.wrapper}
-                            >
+                                className={moviesStyle.wrapper}>
                                 <div className={moviesStyle.cardContent}>
                                     <h3 className={moviesStyle.title}>{movie.title}</h3>
                                     <div className={moviesStyle.poster} style={{backgroundImage: `url("${movie.poster_path}")`}}></div>
                                     <div className={moviesStyle.rate}>Рейтинг: {movie.vote_average}</div>
                                 </div>
                             </Link>
-                        </>
+                        </Fragment>
                     )
                 })}
             </div>

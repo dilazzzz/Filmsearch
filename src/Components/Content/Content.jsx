@@ -3,17 +3,17 @@ import {Route, Routes} from "react-router-dom";
 import Movies from "./Movies/Movies";
 import Peoples from "./Peoples/Peoples";
 import CurrentMovie from "../CurrentMovie/CurrentMovie";
-import contentStyles from './contentStyles.module.css'
-
+import CurrentPeople from "../CurrentPeople/CurrentPeople";
 
 const Content = () => {
 
     return (
-        <div className={contentStyles.wrapper}>
+        <div>
             <Routes>
                 <Route path='/movies'  element={<Movies />} />
                 <Route path='/peoples' element={<Peoples />} />
                 <Route path='/currentMovie/:currentMovieId' element={<CurrentMovie />}/>
+                <Route path='/currentPeople/:currentPeopleId' element={<CurrentPeople />}/>
             </Routes>
         </div>
     );

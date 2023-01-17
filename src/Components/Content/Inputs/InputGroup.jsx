@@ -5,9 +5,9 @@ import {Button} from "@mui/material";
 import inputGroupStyles from './inputGroup.module.css'
 
 
-const InputGroup = ({ placeholder, searchMovie }) => {
+const InputGroup = ({ placeholder, onSearch }) => {
 
-    const [searchMovies, setSearchMovies] = useState('')
+    const [searchString, setSearchMovies] = useState('')
 
     return (
         <Box
@@ -22,14 +22,14 @@ const InputGroup = ({ placeholder, searchMovie }) => {
             <Input
                 className={inputGroupStyles.input}
                 placeholder={placeholder}
-                value={searchMovies}
+                value={searchString}
                 onChange={e => setSearchMovies(e.target.value)}
             />
             <Button
                 variant="outlined"
                 className={inputGroupStyles.button}
-                onClick={() => searchMovie(searchMovies)}
-                disabled={!searchMovies}
+                onClick={() => onSearch(searchString)}
+                disabled={!searchString}
             >Поиск</Button>
         </Box>
     );

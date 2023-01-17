@@ -35,21 +35,10 @@
     padding: 20px;
 }
 
-.descr {
-    text-align: left;
-    font-weight: 500;
-}
-
-.original_language,
-.releaseDate,
-.popularity,
-.original_title,
-.genre,
-.budget,
-.revenue,
-.runtime {
+.row {
     font-weight: 500;
     margin-top: 15px;
+    text-align: left;
 }
 
 .link {

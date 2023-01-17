@@ -1,0 +1,42 @@
+.componentWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper{
+    display: flex;
+    align-items: center;
+    max-width: 185px;
+    margin-top: 30px;
+    gap: 0 40px;
+    padding: 0 20px;
+    border: 2px solid white;
+    border-radius: 15px;
+    text-decoration: none;
+    color: #646ECB;
+    background-color: white;
+}
+
+.peopleListWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.cardContent {
+    width: 180px;
+}
+
+.name,
+.rate,
+.poster {
+    margin: 10px 0;
+}
+
+.poster {
+    background-position: center;
+    background-size: cover;
+    height: 250px;
+    border: 1px solid white;
+    border-radius: 10px;
+}
