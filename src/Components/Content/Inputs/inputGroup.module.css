@@ -15,7 +15,18 @@
 
 .button {
     border: 1px solid white !important;
+    color: #646ECB !important;
+    background-color: white !important;
+}
+
+.button:disabled {
+    opacity: 0.5;
+}
+
+.button:hover {
+    border: 1px solid white !important;
     color: white !important;
+    background-color: #646ECB !important;
 }
 
 

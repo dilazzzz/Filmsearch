@@ -40,3 +40,16 @@
     border: 1px solid white;
     border-radius: 10px;
 }
+
+.pagination {
+    margin: 20px auto 20px;
+}
+
+.pagination a {
+    color: white;
+}
+.notFound {
+    margin: 30px auto;
+    font-size: 30px;
+
+}

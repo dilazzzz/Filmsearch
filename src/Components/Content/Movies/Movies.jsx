@@ -3,6 +3,7 @@ import moviesStyle from './movies.module.css'
 import poster from '../../../img/pinterest_profile_image.png'
 import InputGroup from "../Inputs/InputGroup";
 import {Link} from "react-router-dom";
+import {Pagination} from "@mui/material";
 
 const Movies = () => {
 
@@ -30,10 +31,9 @@ const Movies = () => {
         localStorage.setItem('movieList', JSON.stringify(movieList))
     }, [movieList])
 
-
     return (
         <div className={moviesStyle.componentWrapper}>
-            <InputGroup placeholder='Поиск фильма...' movieList={movieList} onSearch={searchMovie}/>
+            <InputGroup placeholder='Поиск фильма...' movieList={movieList} setMovieList={setMovieList} onSearch={searchMovie}/>
             <div className={moviesStyle.movieListWrapper}>
                 {movieList.map(movie => {
                     return  (
@@ -51,6 +51,12 @@ const Movies = () => {
                     )
                 })}
             </div>
+            <Pagination
+                size={"large"}
+                className={moviesStyle.pagination}
+                count={10}
+                color="secondary"
+            />
         </div>
     );
 };

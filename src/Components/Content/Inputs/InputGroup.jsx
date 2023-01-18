@@ -1,13 +1,21 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
 import Input from '@mui/material/Input';
 import {Button} from "@mui/material";
 import inputGroupStyles from './inputGroup.module.css'
+import {useNavigate} from "react-router-dom";
 
 
-const InputGroup = ({ placeholder, onSearch }) => {
+const InputGroup = (
+    { placeholder, peopleList, setPeopleList, search, movieList, setMovieList}
+) => {
 
-    const [searchString, setSearchMovies] = useState('')
+    const [searchString, setSearchString] = useState('')
+    const navigate = useNavigate()
+
+    useEffect(() => {
+            setSearchString(search)
+    },[search])
 
     return (
         <Box
@@ -23,14 +31,24 @@ const InputGroup = ({ placeholder, onSearch }) => {
                 className={inputGroupStyles.input}
                 placeholder={placeholder}
                 value={searchString}
-                onChange={e => setSearchMovies(e.target.value)}
+                onChange={e => setSearchString(e.target.value)}
             />
             <Button
                 variant="outlined"
                 className={inputGroupStyles.button}
-                onClick={() => onSearch(searchString)}
+                onClick={() => navigate(`/peoples?search=${searchString}`)}
                 disabled={!searchString}
             >Поиск</Button>
+            <Button
+                variant="outlined"
+                className={inputGroupStyles.button}
+                onClick={() => {
+                    setPeopleList([])
+                    setSearchString('')
+                    navigate('/peoples')
+                }}
+                disabled={!peopleList && !movieList}
+            >Очистить список</Button>
         </Box>
     );
 };

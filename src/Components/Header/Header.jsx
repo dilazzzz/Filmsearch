@@ -9,8 +9,11 @@ const Header = () => {
             <NavLink
                 className={headerStyles.link}
                 to="/movies"
-            >Movies</NavLink>
-            <NavLink className={headerStyles.link} to="/peoples">Peoples</NavLink>
+            >Click to find Movies</NavLink>
+            <NavLink
+                className={headerStyles.link}
+                to="/peoples"
+            >Click to find Peoples</NavLink>
         </header>
     );
 };
