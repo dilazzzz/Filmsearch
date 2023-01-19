@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import headerStyles from './header.module.css'
 import {NavLink} from "react-router-dom";
 
 const Header = () => {
+
 
     return (
         <header className={headerStyles.wrapper}>
@@ -13,7 +14,7 @@ const Header = () => {
             <NavLink
                 className={headerStyles.link}
                 to="/peoples"
-            >Click to find Peoples</NavLink>
+            >Click to find famous Peoples</NavLink>
         </header>
     );
 };

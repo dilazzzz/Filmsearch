@@ -20,7 +20,7 @@
 .peopleListWrapper {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    gap: 0 45px;
 }
 
 .cardContent {
@@ -48,8 +48,9 @@
 .pagination a {
     color: white;
 }
+.loading,
 .notFound {
     margin: 30px auto;
     font-size: 30px;
-
 }
+

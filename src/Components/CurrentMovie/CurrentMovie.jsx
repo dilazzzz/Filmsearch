@@ -1,14 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import currentMovieStyle from './currentMovie.module.css'
-import {Link, useParams} from 'react-router-dom'
+import {Link, useNavigate, useParams} from 'react-router-dom'
 import {Button} from "@mui/material";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const CurrentMovie = () => {
 
     const {currentMovieId} = useParams()
-
     const [currentMovie, setCurrentMovie] = useState(null)
+    const navigate = useNavigate()
+
 
     useEffect(() => {
         fetch(`https://api.themoviedb.org/3/movie/${currentMovieId}?api_key=573fc27946f40ab3d839b3bed3cc233c&language=en-US`)
@@ -45,6 +46,7 @@ const CurrentMovie = () => {
                     startIcon={<ArrowBackIcon />}
                     variant="outlined"
                     className={currentMovieStyle.btn}
+                    onClick={() => navigate(-1)}
                 >Назад к фильмам</Button>
              </Link>
         </>

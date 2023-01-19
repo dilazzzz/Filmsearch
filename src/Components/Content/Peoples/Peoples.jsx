@@ -3,12 +3,14 @@ import InputGroup from "../Inputs/InputGroup";
 import peopleStyles from './people.module.css'
 import {Link, useLocation} from 'react-router-dom'
 import poster from "../../../img/pinterest_profile_image.png";
-import {Pagination, PaginationItem} from "@mui/material";
+import {Pagination, PaginationItem, Stack} from "@mui/material";
+import CircularProgress from '@mui/material/CircularProgress';
 
 const Peoples = () => {
 
     const [peopleList, setPeopleList] = useState([])
     const [totalPage, setTotalPage] = useState(1)
+    const [loading, setLoading] = useState(false)
 
     const location = useLocation();
     const query = new URLSearchParams(location.search);
@@ -16,12 +18,11 @@ const Peoples = () => {
     const search = query.get('search') || ''
 
     const searchPeople = () => {
+        setLoading(true)
         fetch(`https://api.themoviedb.org/3/search/person?api_key=573fc27946f40ab3d839b3bed3cc233c&language=en-US&query=${search || ' '}&page=${page}&include_adult=false`)
             .then(res => res.json())
             .then(result => {
-                if (result.success === false) {
-                    return
-                }
+
                 setTotalPage(result.total_pages)
                 setPeopleList(result.results.map(people => {
                     return {
@@ -31,6 +32,7 @@ const Peoples = () => {
                     }
                 }))
             })
+            .finally(() => setLoading(false))
     }
 
     useEffect(() => {
@@ -46,9 +48,13 @@ const Peoples = () => {
 
     return (
         <div className={peopleStyles.componentWrapper}>
-            <InputGroup placeholder='Поиск человека...' search={search} peopleList={peopleList} setPeopleList={setPeopleList} onSearch={searchPeople}/>
+            <InputGroup routeTo='peoples' placeholder='Поиск человека...' search={search} peopleList={peopleList} setPeopleList={setPeopleList} onSearch={searchPeople}/>
             <div className={peopleStyles.peopleListWrapper}>
-                {
+                {loading ?
+                    <Stack className={peopleStyles.loading} sx={{ color: 'white.500' }} spacing={2} direction="row">
+                        <CircularProgress color="inherit" />
+                    </Stack>
+                    :
                     !peopleList.length && search ?
                         <div className={peopleStyles.notFound}>Ничего не найдено :(</div>
                         :
@@ -66,7 +72,7 @@ const Peoples = () => {
                                     </Link>
                                 </Fragment>
                             )
-                    })
+                        })
                 }
             </div>
             {!peopleList.length || peopleList.length < 20?
