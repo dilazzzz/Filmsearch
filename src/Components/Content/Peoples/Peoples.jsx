@@ -61,10 +61,7 @@ const Peoples = () => {
                         peopleList.map(people => {
                             return (
                                 <Fragment key={people.id}>
-                                    <Link
-                                        to={`/currentPeople/${people.id}`}
-                                        className={peopleStyles.wrapper}
-                                    >
+                                    <Link to={`/currentPeople/${people.id}`} className={peopleStyles.wrapper}>
                                         <div className={peopleStyles.cardContent}>
                                             <div className={peopleStyles.poster} style={{backgroundImage: `url("${people.profile_path}")`}}></div>
                                             <h3 className={peopleStyles.name}>{people.name}</h3>
@@ -75,7 +72,7 @@ const Peoples = () => {
                         })
                 }
             </div>
-            {!peopleList.length || peopleList.length < 20?
+            {totalPage < 2?
                 null
                 :
                 <Pagination

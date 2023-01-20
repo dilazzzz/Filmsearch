@@ -40,14 +40,14 @@ const CurrentPeople = () => {
                     <div className={currentPeopleStyle.row}>Популярность: {currentPeople.popularity}</div>
                 </div>
             </div>
-            {/*<Link to={'/peoples'} className={currentPeopleStyle.link}>*/}
+            <Link to={'/peoples'} className={currentPeopleStyle.link}>
                 <Button
                     startIcon={<ArrowBackIcon />}
                     variant="outlined"
                     className={currentPeopleStyle.btn}
                     onClick={() => navigate(-1)}
-                >Назад к людям</Button>
-            {/*</Link>*/}
+                >Назад </Button>
+            </Link>
         </>
     );
 };
